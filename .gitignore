@@ -1,0 +1,7 @@
+# 追加ファイル
+.vscode
+debug.py
+bk
+
+# 生成ファイル
+__pycache__
