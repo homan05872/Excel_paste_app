@@ -3,5 +3,8 @@
 debug.py
 bk
 
+# 仮想環境
+venv
+
 # 生成ファイル
 __pycache__
