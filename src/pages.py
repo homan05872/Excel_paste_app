@@ -4,12 +4,14 @@ from tkinter import messagebox
 from abc import ABC, abstractmethod
 from common_widget.header_frame import HeaderFrame
 from common_widget.readfile_frame import ReadFileframe
+from common_widget.roading_spinner import LoadingSpinner
 from const.enums import ReadFileframe_Kinds
 
 class BasePage(ctk.CTkFrame, ABC):
     def __init__(self, master:ctk.CTk|tk.Tk, **kwargs) -> None:
         super().__init__(master, **kwargs)
         self.style = self.master.style
+        self.loading_spiner = LoadingSpinner
     
     @abstractmethod
     def build_ui(self) -> None:
@@ -19,6 +21,12 @@ class BasePage(ctk.CTkFrame, ABC):
     def show_page(self, page_name:str) -> None:
         '''ページ遷移するメソッド'''
         self.master.show_page(page_name)
+        
+    def show_loading(self):
+        # 読み込み中アイコンの表示（アイコンファイルのパスを指定）
+        self.spinner = LoadingSpinner(self)
+        
+        return self.spinner
 
 # **************************************
 # メインページ
@@ -48,7 +56,6 @@ class Main_Page(BasePage):
         # 貼り付け先Excelファイルorフォルダ読み込み
         self.frame2 = ReadFileframe(self, ReadFileframe_Kinds.FOLDER, **self.style.frame_bg)
         self.frame2.grid(row=1, column=1, pady=20, padx=(0,30), sticky="nsew")
-
 
 
 # **************************************

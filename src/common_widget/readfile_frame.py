@@ -9,6 +9,7 @@ from pathlib import Path
 from const.enums import ReadFileframe_Kinds
 from windows import ConfirmWindow
 
+
 class ReadFileframe(ctk.CTkFrame):
     ''' Excel読込用ウィジェット '''
     def __init__(self, master:Any, kind_flag, **kwargs):
@@ -138,7 +139,7 @@ class ReadFileframe(ctk.CTkFrame):
     # その他のメソッド
     # ************************************************    
     def display_excel_info(self, file_path:str):
-        ''' エクセルファイル読込処理 '''
+        ''' エクセルファイル情報の画面更新 '''
         excel_flag = self.is_excel_path(file_path)
         
         # パスチェック
